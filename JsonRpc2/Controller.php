@@ -111,6 +111,7 @@ class Controller extends \yii\web\Controller
             }
         } catch (\Exception $e) {
             $error = new Exception(Yii::t('jsonrpc', 'Internal error'), Exception::INTERNAL_ERROR);
+            Yii::error($e);
         }
 
         if (!isset($this->requestObject->id) && (empty($error) || !in_array($error->getCode(), [Exception::PARSE_ERROR, Exception::INVALID_REQUEST])))
